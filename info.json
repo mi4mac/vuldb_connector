@@ -1,0 +1,1483 @@
+{
+  "name": "vuldb",
+  "label": "VulDB",
+  "description": "Connector for VulDB Vulnerability and CTI API.",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.2.4",
+  "category": "threatintel",
+  "configuration": {
+    "fields": [
+      {
+        "title": "API Key",
+        "name": "api_key",
+        "type": "password",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "VulDB personal API key."
+      },
+      {
+        "title": "Base URL",
+        "name": "base_url",
+        "type": "text",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://vuldb.com/?api",
+        "tooltip": "VulDB API endpoint URL."
+      },
+      {
+        "title": "API Version",
+        "name": "api_version",
+        "type": "text",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": "3",
+        "tooltip": "Major API version to pin (e.g. 3)."
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "tooltip": "Verify SSL certificate of the VulDB endpoint."
+      },
+      {
+        "title": "Skip API Health Check",
+        "name": "skip_health_check_api_call",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "tooltip": "If enabled, health check only validates API key presence (no API call)."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_entry_by_id",
+      "title": "Get Entry by ID",
+      "description": "Fetch a VulDB entry by ID (single or comma-separated list).",
+      "category": "investigation",
+      "annotation": "get_entry_by_id",
+      "parameters": [
+        {
+          "title": "ID",
+          "name": "id",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Entry ID or comma-separated IDs."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details (higher credit usage)."
+        },
+        {
+          "title": "Fields",
+          "name": "fields",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Comma-separated additional fields for basic requests."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_recent",
+      "title": "Get Recent Entries",
+      "description": "Fetch most recent VulDB entries.",
+      "category": "investigation",
+      "annotation": "get_recent",
+      "parameters": [
+        {
+          "title": "Count",
+          "name": "recent",
+          "type": "integer",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "value": 10,
+          "tooltip": "Number of items to return."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details (higher credit usage)."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "My Filter",
+          "name": "myfilter",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Apply My Filter from VulDB profile."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_updates",
+      "title": "Get Updated Entries",
+      "description": "Fetch most recently updated VulDB entries.",
+      "category": "investigation",
+      "annotation": "get_updates",
+      "parameters": [
+        {
+          "title": "Count",
+          "name": "updates",
+          "type": "integer",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "value": 10,
+          "tooltip": "Number of items to return."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details (higher credit usage)."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "My Filter",
+          "name": "myfilter",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Apply My Filter from VulDB profile."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "search",
+      "title": "Search",
+      "description": "Search vulnerabilities by query string.",
+      "category": "investigation",
+      "annotation": "search",
+      "parameters": [
+        {
+          "title": "Query",
+          "name": "search",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Search query string."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details (higher credit usage)."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Limit number of results."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Offset for pagination."
+        },
+        {
+          "title": "Sort",
+          "name": "sort",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "id",
+            "entry_timestamp_create",
+            "entry_timestamp_change",
+            "advisory_date",
+            "source_cve",
+            "source_securityfocus",
+            "source_secunia",
+            "source_osvdb"
+          ],
+          "tooltip": "Sort field."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "advanced_search",
+      "title": "Advanced Search",
+      "description": "Search vulnerabilities using advanced search keys.",
+      "category": "investigation",
+      "annotation": "advanced_search",
+      "parameters": [
+        {
+          "title": "Advanced Search",
+          "name": "advancedsearch",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Example: vendor:Microsoft,product:Windows,version:10"
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details (higher credit usage)."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Limit number of results."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Offset for pagination."
+        },
+        {
+          "title": "Sort",
+          "name": "sort",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "id",
+            "entry_timestamp_create",
+            "entry_timestamp_change",
+            "advisory_date",
+            "source_cve",
+            "source_securityfocus",
+            "source_secunia",
+            "source_osvdb"
+          ],
+          "tooltip": "Sort field."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "vendor_lookup",
+      "title": "Vendor Lookup",
+      "description": "Lookup vendors by prefix.",
+      "category": "investigation",
+      "annotation": "vendor_lookup",
+      "parameters": [
+        {
+          "title": "Vendor Lookup",
+          "name": "vendorlookup",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Vendor lookup string."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "product_lookup",
+      "title": "Product Lookup",
+      "description": "Lookup products by prefix.",
+      "category": "investigation",
+      "annotation": "product_lookup",
+      "parameters": [
+        {
+          "title": "Product Lookup",
+          "name": "productlookup",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Product lookup string."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_exploit_status",
+      "title": "Get Exploit Status",
+      "description": "Fetch exploit availability and exploitation indicators for an entry.",
+      "category": "investigation",
+      "annotation": "get_exploit_status",
+      "parameters": [
+        {
+          "title": "ID",
+          "name": "id",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Entry ID or comma-separated IDs."
+        },
+        {
+          "title": "Fields",
+          "name": "fields",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": "exploit_exploitability,exploit_epss_score,exploit_epss_percentile,exploit_kev_added,exploit_kev_due,exploit_kev_requiredaction,exploit_kev_knownransomware,exploit_kev_notes",
+          "tooltip": "Comma-separated fields to request."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_exploit_context",
+      "title": "Get Exploit Context",
+      "description": "Fetch normalized exploit context for an entry.",
+      "category": "investigation",
+      "annotation": "get_exploit_context",
+      "parameters": [
+        {
+          "title": "ID",
+          "name": "id",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Entry ID or comma-separated IDs."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details if available."
+        },
+        {
+          "title": "CTI",
+          "name": "cti",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "Fields",
+          "name": "fields",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": "source_cve_id,vulnerability_risk_value,vulnerability_risk_name,vulnerability_cwe,vulnerability_cvss3_vuldb_basescore,vulnerability_cvss3_vuldb_basevector,exploit_epss_score,exploit_epss_percentile,exploit_price_0day,exploit_price_today,exploit_price_trend,countermeasure_remediationlevel,countermeasure_name",
+          "tooltip": "Comma-separated fields to request."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_ipaddr",
+      "title": "CTI IP Address",
+      "description": "Fetch CTI details for an IP address.",
+      "category": "investigation",
+      "annotation": "cti_ipaddr",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "ipaddr",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "IPv4 address to query."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_actor",
+      "title": "CTI Actor",
+      "description": "Fetch CTI details for an actor name.",
+      "category": "investigation",
+      "annotation": "cti_actor",
+      "parameters": [
+        {
+          "title": "Actor",
+          "name": "actor",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Actor name (case-insensitive)."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_sector",
+      "title": "CTI Sector",
+      "description": "Fetch CTI details for a sector.",
+      "category": "investigation",
+      "annotation": "cti_sector",
+      "parameters": [
+        {
+          "title": "Sector",
+          "name": "sector",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Sector name (case-sensitive)."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_events",
+      "title": "CTI Events",
+      "description": "Fetch current CTI events.",
+      "category": "investigation",
+      "annotation": "cti_events",
+      "parameters": [
+        {
+          "title": "Count",
+          "name": "events",
+          "type": "integer",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "value": 5,
+          "tooltip": "Number of events (1-10)."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_activities_top",
+      "title": "CTI Top Activities",
+      "description": "Fetch most active vulnerabilities (CTI).",
+      "category": "investigation",
+      "annotation": "cti_activities_top",
+      "parameters": [
+        {
+          "title": "Count",
+          "name": "activitiestop",
+          "type": "integer",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "value": 10,
+          "tooltip": "Number of items to return."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    },
+    {
+      "operation": "cti_iplist_date",
+      "title": "CTI IP List by Date",
+      "description": "Fetch IP addresses added on a specific date.",
+      "category": "investigation",
+      "annotation": "cti_iplist_date",
+      "parameters": [
+        {
+          "title": "Date",
+          "name": "iplist_date",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Date in YYYYMMDD format."
+        },
+        {
+          "title": "Details",
+          "name": "details",
+          "type": "checkbox",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": true,
+          "tooltip": "Return full details."
+        },
+        {
+          "title": "Format",
+          "name": "format",
+          "type": "select",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "json",
+            "xml",
+            "csv"
+          ],
+          "tooltip": "Response format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "exploit_status": {
+          "exploitability": "",
+          "epss_score": "",
+          "epss_percentile": "",
+          "kev_added": "",
+          "kev_due": "",
+          "kev_requiredaction": "",
+          "kev_knownransomware": "",
+          "kev_notes": "",
+          "exploit_exists": false,
+          "under_exploitation": false
+        },
+        "exploit_context": {
+          "entry": {
+            "id": "",
+            "title": "",
+            "timestamp": {}
+          },
+          "source": {
+            "cve": {
+              "id": ""
+            }
+          },
+          "vulnerability": {
+            "risk": {},
+            "cwe": "",
+            "cvss3_vuldb": {}
+          },
+          "exploit": {
+            "price": {}
+          },
+          "countermeasure": {
+            "name": "",
+            "remediationlevel": ""
+          },
+          "cti": {
+            "activity": {}
+          }
+        }
+      }
+    }
+  ],
+  "help_online": "https://vuldb.com/de/?kb.api"
+}
