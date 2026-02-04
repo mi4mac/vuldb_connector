@@ -1,1 +1,1357 @@
-[]
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "Sample - VulDB - 1.2.5",
+      "description": "Sample playbooks for \"VulDB\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "uuid": "0c2142dc-ef04-49d0-9836-38f77b80304e",
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "vuldb"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Entry by ID",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch a VulDB entry by ID (single or comma-separated list).",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b8a69e0d-8094-4e78-b070-d18146b0c900",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Entry by ID",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "id": "sample",
+                  "details": false,
+                  "fields": "sample",
+                  "cti": false,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "get_entry_by_id",
+                "operationTitle": "Get Entry by ID",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d3b3f6f7-4c90-4d31-9118-8961d60c9e43"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "b8a69e0d-8094-4e78-b070-d18146b0c900"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Entry by ID",
+              "targetStep": "/api/3/workflow_steps/d3b3f6f7-4c90-4d31-9118-8961d60c9e43",
+              "sourceStep": "/api/3/workflow_steps/b8a69e0d-8094-4e78-b070-d18146b0c900",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "4ea9a2c6-5b33-4b2e-bd49-f98afe4e3ab3"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "0695879b-f25e-4c00-8c10-7bba394bf395",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Recent Entries",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch most recent VulDB entries.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1634c0c6-fdf1-438e-b328-f49ab144fa1d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Recent Entries",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "recent": 10,
+                  "details": false,
+                  "cti": false,
+                  "myfilter": false,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "get_recent",
+                "operationTitle": "Get Recent Entries",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "07d2648d-42d9-451c-abb1-0ac9e1cbc324"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "1634c0c6-fdf1-438e-b328-f49ab144fa1d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Recent Entries",
+              "targetStep": "/api/3/workflow_steps/07d2648d-42d9-451c-abb1-0ac9e1cbc324",
+              "sourceStep": "/api/3/workflow_steps/1634c0c6-fdf1-438e-b328-f49ab144fa1d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5f3a2510-091a-4f0f-b2e8-ba3739837189"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "e39be199-c7dc-4eb6-8ce0-c35ad0495492",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Updated Entries",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch most recently updated VulDB entries.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0f262421-1604-43ca-a8a2-3a5f00719c1b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Updated Entries",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "updates": 10,
+                  "details": false,
+                  "cti": false,
+                  "myfilter": false,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "get_updates",
+                "operationTitle": "Get Updated Entries",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "dfa8236f-aa86-48e9-a927-970c54ff93a9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "0f262421-1604-43ca-a8a2-3a5f00719c1b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Updated Entries",
+              "targetStep": "/api/3/workflow_steps/dfa8236f-aa86-48e9-a927-970c54ff93a9",
+              "sourceStep": "/api/3/workflow_steps/0f262421-1604-43ca-a8a2-3a5f00719c1b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ef502343-b9fd-4b56-aa19-b157a37724c5"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "bcb166b2-df30-4b89-a35b-f1b559357279",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Search vulnerabilities by query string.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5cee7d9a-e535-4a92-98e5-0ea5f0a3bb3b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "search": "sample",
+                  "details": false,
+                  "cti": false,
+                  "fields": "sample",
+                  "limit": 1,
+                  "offset": 1,
+                  "sort": "id",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "search",
+                "operationTitle": "Search",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9adad826-eb2b-406f-b6af-aef86d343794"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "5cee7d9a-e535-4a92-98e5-0ea5f0a3bb3b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Search",
+              "targetStep": "/api/3/workflow_steps/9adad826-eb2b-406f-b6af-aef86d343794",
+              "sourceStep": "/api/3/workflow_steps/5cee7d9a-e535-4a92-98e5-0ea5f0a3bb3b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d2b04cc1-e983-4ab8-ae5d-768e2bee487e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "2e41745c-2e44-4f7e-a597-2f8c4b2d3420",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Advanced Search",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Search vulnerabilities using advanced search keys.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2df3b57f-6bb5-4794-9eb3-65485252a84d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Advanced Search",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "advancedsearch": "sample",
+                  "details": false,
+                  "cti": false,
+                  "limit": 1,
+                  "offset": 1,
+                  "sort": "id",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "advanced_search",
+                "operationTitle": "Advanced Search",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2c19295f-7993-4a23-97e8-aa6e4c1be8ac"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2df3b57f-6bb5-4794-9eb3-65485252a84d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Advanced Search",
+              "targetStep": "/api/3/workflow_steps/2c19295f-7993-4a23-97e8-aa6e4c1be8ac",
+              "sourceStep": "/api/3/workflow_steps/2df3b57f-6bb5-4794-9eb3-65485252a84d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "e062d99d-78a3-44aa-af8f-21f678af7207"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "8b0f82c4-885a-4be1-abda-846b4c2f5c66",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Vendor Lookup",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Lookup vendors by prefix.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/22339ab9-aea8-4818-aadc-f6b493803538",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Vendor Lookup",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "vendorlookup": "sample",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "vendor_lookup",
+                "operationTitle": "Vendor Lookup",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "dfb042b8-ce68-4e4b-87e6-94c8795f353b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "22339ab9-aea8-4818-aadc-f6b493803538"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Vendor Lookup",
+              "targetStep": "/api/3/workflow_steps/dfb042b8-ce68-4e4b-87e6-94c8795f353b",
+              "sourceStep": "/api/3/workflow_steps/22339ab9-aea8-4818-aadc-f6b493803538",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ca7061c9-6524-4cd3-a255-8cd09a408a09"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "b1013d92-3ed0-47be-8223-f0b30d1ea1aa",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Product Lookup",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Lookup products by prefix.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ecf4b4ce-a921-4387-9418-6aa4cf755b25",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Product Lookup",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "productlookup": "sample",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "product_lookup",
+                "operationTitle": "Product Lookup",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "49d70a36-3d46-4bb2-abcd-70c23064a2fa"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "ecf4b4ce-a921-4387-9418-6aa4cf755b25"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Product Lookup",
+              "targetStep": "/api/3/workflow_steps/49d70a36-3d46-4bb2-abcd-70c23064a2fa",
+              "sourceStep": "/api/3/workflow_steps/ecf4b4ce-a921-4387-9418-6aa4cf755b25",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9772af3d-3cf9-43f3-9376-fca071699acd"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "603a6192-41dd-40fe-9064-204fdaa1244f",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Exploit Status",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch exploit availability and exploitation indicators for an entry.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9b04b039-9c5b-4aa2-8aaa-1e0754958a27",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Exploit Status",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "id": "sample",
+                  "fields": "exploit_exploitability,exploit_epss_score,exploit_epss_percentile,exploit_kev_added,exploit_kev_due,exploit_kev_requiredaction,exploit_kev_knownransomware,exploit_kev_notes",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "get_exploit_status",
+                "operationTitle": "Get Exploit Status",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1f7e7f9b-675e-4624-ac7c-38711ad8a8fe"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "9b04b039-9c5b-4aa2-8aaa-1e0754958a27"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Exploit Status",
+              "targetStep": "/api/3/workflow_steps/1f7e7f9b-675e-4624-ac7c-38711ad8a8fe",
+              "sourceStep": "/api/3/workflow_steps/9b04b039-9c5b-4aa2-8aaa-1e0754958a27",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "cb638eeb-dfde-4d95-a321-1b1b904e9f37"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "48dd81cc-1b77-4d45-b8cf-9e12a386d49e",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Exploit Context",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch normalized exploit context for an entry.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1e1a8562-785a-464b-8a8c-8625724d52c2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Exploit Context",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "id": "sample",
+                  "details": true,
+                  "cti": false,
+                  "fields": "source_cve_id,vulnerability_risk_value,vulnerability_risk_name,vulnerability_cwe,vulnerability_cvss3_vuldb_basescore,vulnerability_cvss3_vuldb_basevector,exploit_epss_score,exploit_epss_percentile,exploit_price_0day,exploit_price_today,exploit_price_trend,countermeasure_remediationlevel,countermeasure_name",
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "get_exploit_context",
+                "operationTitle": "Get Exploit Context",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8415675f-790d-4713-9401-7afc10326c95"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "1e1a8562-785a-464b-8a8c-8625724d52c2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Exploit Context",
+              "targetStep": "/api/3/workflow_steps/8415675f-790d-4713-9401-7afc10326c95",
+              "sourceStep": "/api/3/workflow_steps/1e1a8562-785a-464b-8a8c-8625724d52c2",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "3ee45c70-9a21-48d1-ba80-27aba0632745"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "bc694ec3-0ec5-4ff7-82c3-485cc55c2ddc",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI IP Address",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch CTI details for an IP address.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/da3256cb-61ae-475c-8bc6-38229dcf07ed",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI IP Address",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "ipaddr": "sample",
+                  "details": true,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_ipaddr",
+                "operationTitle": "CTI IP Address",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "64d7f677-965a-4383-80b7-9ff4286c0f1e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "da3256cb-61ae-475c-8bc6-38229dcf07ed"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI IP Address",
+              "targetStep": "/api/3/workflow_steps/64d7f677-965a-4383-80b7-9ff4286c0f1e",
+              "sourceStep": "/api/3/workflow_steps/da3256cb-61ae-475c-8bc6-38229dcf07ed",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "87fb48f6-5a86-47e1-a9d6-c0528bcd22cf"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "cec60d58-6ffc-4fbd-980b-193f756b9401",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI Actor",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch CTI details for an actor name.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6658bd93-243c-4691-bb52-da359d11a9b9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI Actor",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "actor": "sample",
+                  "details": true,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_actor",
+                "operationTitle": "CTI Actor",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "477d70e1-3f0f-4991-90e9-b9c8448062c5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "6658bd93-243c-4691-bb52-da359d11a9b9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI Actor",
+              "targetStep": "/api/3/workflow_steps/477d70e1-3f0f-4991-90e9-b9c8448062c5",
+              "sourceStep": "/api/3/workflow_steps/6658bd93-243c-4691-bb52-da359d11a9b9",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "8b24ea32-6294-4285-a7e9-1e94767a8047"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "abf54ed3-40e3-4180-8c87-036483f809ee",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI Sector",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch CTI details for a sector.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1e8fcbe8-b2eb-4934-8830-f603108112e9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI Sector",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "sector": "sample",
+                  "details": true,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_sector",
+                "operationTitle": "CTI Sector",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "77864285-fc87-4383-85f8-2e563c15d65a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "1e8fcbe8-b2eb-4934-8830-f603108112e9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI Sector",
+              "targetStep": "/api/3/workflow_steps/77864285-fc87-4383-85f8-2e563c15d65a",
+              "sourceStep": "/api/3/workflow_steps/1e8fcbe8-b2eb-4934-8830-f603108112e9",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9b75af60-071f-4fa1-9ccf-ec7b4915a0c8"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "c3bf524f-342f-4f6b-b61e-fd91db3cfff3",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI Events",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch current CTI events.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f1131990-4e8c-48e4-bd5b-50b1b7ea11cc",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI Events",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "events": 5,
+                  "details": true,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_events",
+                "operationTitle": "CTI Events",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "349cc6c6-d766-4026-88a5-18275ccf7e09"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "f1131990-4e8c-48e4-bd5b-50b1b7ea11cc"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI Events",
+              "targetStep": "/api/3/workflow_steps/349cc6c6-d766-4026-88a5-18275ccf7e09",
+              "sourceStep": "/api/3/workflow_steps/f1131990-4e8c-48e4-bd5b-50b1b7ea11cc",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "619bea34-1ccf-4f7f-9d47-ffc14f4b7899"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "8d90b9c5-8c34-4466-96d0-d3e527522bec",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI Top Activities",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch most active vulnerabilities (CTI).",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/aaf1f29b-eaa9-47c4-b3e8-5605f84db8c6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI Top Activities",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "activitiestop": 10,
+                  "details": false,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_activities_top",
+                "operationTitle": "CTI Top Activities",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bb599b0b-32e1-4aff-a9ed-85a169147175"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "aaf1f29b-eaa9-47c4-b3e8-5605f84db8c6"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI Top Activities",
+              "targetStep": "/api/3/workflow_steps/bb599b0b-32e1-4aff-a9ed-85a169147175",
+              "sourceStep": "/api/3/workflow_steps/aaf1f29b-eaa9-47c4-b3e8-5605f84db8c6",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f84fe84e-2f22-48b3-a617-035c5690e877"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "6495c928-cd29-45dd-9296-8c31fd608eea",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "CTI IP List by Date",
+          "aliasName": null,
+          "tag": "#VulDB",
+          "description": "Fetch IP addresses added on a specific date.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770204218,
+          "collection": "/api/3/workflow_collections/0c2142dc-ef04-49d0-9836-38f77b80304e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ce298afe-4b46-4502-8c3f-db8c8f6d7eee",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "CTI IP List by Date",
+              "description": null,
+              "arguments": {
+                "name": "VulDB",
+                "config": "",
+                "params": {
+                  "iplist_date": "sample",
+                  "details": true,
+                  "format": "json"
+                },
+                "version": "1.2.5",
+                "connector": "vuldb",
+                "operation": "cti_iplist_date",
+                "operationTitle": "CTI IP List by Date",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e7d47faf-aa51-4946-957b-e4d1c01b6349"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "ce298afe-4b46-4502-8c3f-db8c8f6d7eee"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> CTI IP List by Date",
+              "targetStep": "/api/3/workflow_steps/e7d47faf-aa51-4946-957b-e4d1c01b6349",
+              "sourceStep": "/api/3/workflow_steps/ce298afe-4b46-4502-8c3f-db8c8f6d7eee",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9a67613a-162c-43b5-8b38-8e0805a88a15"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a059b8b7-63e0-401a-9428-4619d9156915",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuldb"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": []
+}
