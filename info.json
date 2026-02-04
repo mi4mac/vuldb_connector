@@ -5,7 +5,7 @@
   "publisher": "Community",
   "cs_approved": false,
   "cs_compatible": true,
-  "version": "1.2.4",
+  "version": "1.2.5",
   "category": "threatintel",
   "configuration": {
     "fields": [
@@ -409,6 +409,15 @@
           "visible": true,
           "value": false,
           "tooltip": "Include CTI data if eligible."
+        },
+        {
+          "title": "Fields",
+          "name": "fields",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Comma-separated additional fields for basic requests."
         },
         {
           "title": "Limit",

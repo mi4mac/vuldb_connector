@@ -42,3 +42,17 @@ By default this option is enabled and the health check does not call the API.
 - Supported advanced search keys: vendor, product, version, component, function,
   argument, advisory, researcher, researcher_company, exploit_developer,
   exploit_language, cve, bugtraq, osvdb, xforce, secunia, exploitdb, nessus.
+
+## Advanced Search Example
+Example query and optional modifiers:
+```
+advancedsearch=vendor:Microsoft,product:Windows,version:10
+details=1&cti=1&fields=vulnerability_cwe,vulnerability_cvss3_vuldb_basescore
+limit=10
+```
+
+## Testing
+Use `python3` to run tests:
+```
+python3 test_operations.py
+```

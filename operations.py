@@ -322,6 +322,10 @@ def search(config, params):
 
 def advanced_search(config, params):
     query = params.get("advancedsearch")
+    if query is None:
+        raise ConnectorError("Parameter 'advancedsearch' is required.")
+
+    query = str(query).strip()
     if not query:
         raise ConnectorError("Parameter 'advancedsearch' is required.")
 
