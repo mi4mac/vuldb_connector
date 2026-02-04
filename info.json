@@ -7,6 +7,8 @@
   "cs_compatible": true,
   "version": "1.2.5",
   "category": "threatintel",
+  "icon_small_name": "vuldb_small.png",
+  "icon_large_name": "vuldb_large.png",
   "configuration": {
     "fields": [
       {
