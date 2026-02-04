@@ -39,3 +39,6 @@ By default this option is enabled and the health check does not call the API.
 - Use `details` and `cti` options only when needed to reduce credit usage.
 - For advanced search syntax and field references, see:
   https://vuldb.com/de/?kb.api
+- Supported advanced search keys: vendor, product, version, component, function,
+  argument, advisory, researcher, researcher_company, exploit_developer,
+  exploit_language, cve, bugtraq, osvdb, xforce, secunia, exploitdb, nessus.

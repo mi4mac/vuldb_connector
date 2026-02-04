@@ -519,7 +519,7 @@
           "required": true,
           "editable": true,
           "visible": true,
-          "tooltip": "Example: vendor:Microsoft,product:Windows,version:10"
+          "tooltip": "Example: vendor:Microsoft,product:Windows,version:10. Keys: vendor, product, version, component, function, argument, advisory, researcher, researcher_company, exploit_developer, exploit_language, cve, bugtraq, osvdb, xforce, secunia, exploitdb, nessus."
         },
         {
           "title": "Details",
